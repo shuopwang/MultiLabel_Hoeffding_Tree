@@ -1,8 +1,6 @@
 from numpy import *
 import numpy as np
 from skmultiflow.classification.trees.hoeffding_tree import HoeffdingTree
-from MutltiLabelInfoGainSplitCriterion import MutltiLabelInfoGainSplitCriterion
-from NominalAttributeClassObserver import NominalAttributeClassObserver
 
 
 class MultiLabelHoeffdingTree(HoeffdingTree):
@@ -30,7 +28,7 @@ class MultiLabelHoeffdingTree(HoeffdingTree):
             return self.vectorCounts
 
     class MultilabelLearningNodeClassifieringNode(HoeffdingTree.ActiveLearningNode):
-        def __init__(self, initial_class_observations, classification=None, HoeffdingTreeClassifLeaves ht):
+        def __init__(self, initial_class_observations, classification=None):
             super().__init__(initial_class_observations)
             if classification == None:
                 self.classification = Majority()
@@ -89,5 +87,4 @@ class MultiLabelHoeffdingTree(HoeffdingTree):
         return predictions
 
 
-#multilabelHT = MultiLabelHoeffdingTree()
-
+multilabelHT = MultiLabelHoeffdingTree()
