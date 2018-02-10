@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 from skmultiflow.classification.trees.hoeffding_tree import HoeffdingTree
 
 
-class BR_hoeffding:
+class BR_Hoeffding:
 
     def __init__(self):
         self.hoeffdingTreesList = None
@@ -18,14 +18,14 @@ class BR_hoeffding:
             self.hoeffdingTreesList[column].fit(X, yvar)
         return self
 
-    def partial_fit(self, X, Y=None):
+    def partial_fit(self, X, y, classes=None):
         if self.hoeffdingTreesList is None:
-            self.hoeffdingTreesList = list(range(len(Y[0])))
-        for column in range(len(Y[0])):
-            yvar = np.zeros((len(Y), 1))
-            for row in range(len(Y)):
-                yvar[row][0] = Y[row][column]
-            if self.hoeffdingTreesList[column]:
+            self.hoeffdingTreesList = list(range(len(y[0])))
+        for column in range(len(y[0])):
+            yvar = np.zeros((len(y), 1))
+            for row in range(len(y)):
+                yvar[row][0] = y[row][column]
+            if self.hoeffdingTreesList[colsumn]:
                 self.hoeffdingTreesList[column].partial_fit(X, yvar)
             else:
                 self.hoeffdingTreesList.append(HoeffdingTree())
