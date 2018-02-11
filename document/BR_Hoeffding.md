@@ -54,10 +54,9 @@ C4.5 is the successor to ID3 and removed the restriction that features must be c
 Information gain:
   - ![](https://raw.githubusercontent.com/shuopwang/MultiLabel_Hoeffding_Tree/master/01.png?token=AJ5Yeh9m5GJsqJLiS6RIayLZBCTgkKfEks5aiek3wA%3D%3D)
 
-## OneVSRestClassifier
-The similar method OneVsRest to binery relevance in sklearn:
-> http://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html
-
 ## Binary Relevance
 BR:
   - ![](https://github.com/RuiSUN1124/TestGit/raw/master/GitTest/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180211230243.png)
+
+The similar method OneVsRest to binary relevance in sklearn:
+> http://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html
