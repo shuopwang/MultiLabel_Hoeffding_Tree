@@ -52,7 +52,7 @@ C4.5 is the successor to ID3 and removed the restriction that features must be c
 
 ## Mathematical formulation
 Information gain:
-> https://raw.githubusercontent.com/shuopwang/MultiLabel_Hoeffding_Tree/master/01.png?token=AJ5Yeh9m5GJsqJLiS6RIayLZBCTgkKfEks5aiek3wA%3D%3D
+ -[]!(https://raw.githubusercontent.com/shuopwang/MultiLabel_Hoeffding_Tree/master/01.png?token=AJ5Yeh9m5GJsqJLiS6RIayLZBCTgkKfEks5aiek3wA%3D%3D)
 
 ## OneVSRestClassifier
 The similar method OneVsRest to binery relevance in sklearn:
