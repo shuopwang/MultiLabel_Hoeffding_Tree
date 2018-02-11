@@ -56,4 +56,4 @@ Information gain:
   - ![](../01.png)
 
 Adapted C4.5 to multi-label data classification by modifying the entropy calculation
--  ![](../02.png)
+  - ![](../02.png)
