@@ -5,6 +5,8 @@
 ```
 <b>MultiLabelHoeffdingTree</b> is a class capable of performing multi-labels classification on a stream dataset.
 
+The Hoeffding tree is the state-of-the-art classifier for single-label data streams, and performs prediction by choosing the majority class at each leaf. Predictive accuracy can be increased by adding naive Bayes models at the leaves of the trees. Here, we extend the Hoeffding Tree to deal with multi-label data: a Multi-label Hoeffding Tree.
+
 As with other classifiers, <b>MultiLabelHoeffdingTree</b> takes as input two array: an array X, sparse or dense, of size [n_samples, n_features] holding the training samples, and an array Y includes serval sub-array, and the sub-array store 1 or 0 to present yes or no:
 
 ```py
