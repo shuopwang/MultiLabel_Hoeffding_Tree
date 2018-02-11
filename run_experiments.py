@@ -12,11 +12,10 @@ dataset = "Naive_imdb"
 
 # 1. Create a stream
 opt = FileOption("FILE", "OPT_NAME", "" + dataset + ".csv", "CSV", False)
-stream = FileStream(opt, 1, 27)
+stream = FileStream(opt, 2, 27)
 # 2. Prepare for use
 stream.prepare_for_use()
-print("The number of targets: ", stream.get_info())
-
+# stream.print_df()
 # 2. Instantiate the HoeffdingTree classifier
 # h = [	#BR(h=SGDClassifier(n_iter=1)),
 #KNN(k=10, max_window_size=100, leaf_size=30),
@@ -25,9 +24,9 @@ print("The number of targets: ", stream.get_info())
 #       MultiLabelHoeffdingTree(),
 #   ]
 
-h = BR_Hoeffding()
+h = MultiLabelHoeffdingTree()
 # 3. Setup the evaluator
 eval = EvaluatePrequential(pretrain_size=1000, output_file='result_' + dataset + '.csv', max_instances=10000, batch_size=1,
-                           n_wait=500, max_time=1000000000, task_type='multi_output', show_plot=False, plot_options=['performance'])
+                           n_wait=500, max_time=1000000000, task_type='multi_output', show_plot=False)
 # 4. Run
 eval.eval(stream=stream, classifier=h)
