@@ -45,10 +45,18 @@ class MultiLabelHoeffdingTree(HoeffdingTree):
             if not self._is_initialized:
                 self._attribute_observers = [None] * len(X)
                 self._is_initialized = True
-            y = np.asarray(y)
-            #print(y)
-            #print(y.shape)
-            y = y.reshape((1, 1))
+            # print(y)
+            # print(y.shape)
+            #print("---" * 20 + "debug partial_fit BEGINNING......" + "---" * 20)
+            # print(X)
+            # print(y)
+            # tmp=[]
+            # tmp.append(X)
+
+            #print("The shape of X: ", len(X), "  ", len(X[0]))
+            #print("The shape of y: ", len(y), "  ", len(y[0]))
+            #print("---" * 20 + "debug partial_fit ENDING........." + "---" * 20)
+            self.L = len(y)
             for l in y:
                 if l != 0 and l != '0':
                     l = int(l)
@@ -83,17 +91,22 @@ class MultiLabelHoeffdingTree(HoeffdingTree):
 
     def predict(self, X):
         # TODO
-        r, _ = get_dimensions(X)
-        predictions = []
-        for i in range(r):
-            votes = self.get_votes_for_instance(X[i])
-            if votes == {}:
-                # Tree is empty, all classes equal, default to zero
-                predictions.append(0)
-            else:
-                predictions.append(max(votes, key=votes.get)
-                                   )
-        return predictions
-
-
-multilabelHT = MultiLabelHoeffdingTree()
+        #r, _ = get_dimensions(X)
+        real = []
+        t = []
+        votes = self.get_votes_for_instance(X)
+        if votes == {}:
+            predictions = np.zeros((len(X), self.L))
+            return predictions
+        else:
+            predictions = (max(votes, key=votes.get))
+        for i in predictions:
+            if i.isdigit():
+                real.append(int(i))
+        t.append(real)
+#        print("-" * 20 + "debug 2" + "-" * 20)
+#        print("type of results:", type(t))
+#        print("len of results", len(t))
+#        print("results: ", t)
+#        print("-" * 20 + "debug 2" + "-" * 20)
+        return t
