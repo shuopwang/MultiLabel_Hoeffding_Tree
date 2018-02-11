@@ -53,7 +53,7 @@ Using the IMDB datasets with streaming method to test the performance of MultiLa
 C4.5 is the successor to ID3 and removed the restriction that features must be categorical by dynamically defining a discrete attribute (based on numerical variables) that partitions the continuous attribute value into a discrete set of intervals. C4.5 converts the trained trees (i.e. the output of the ID3 algorithm) into sets of if-then rules. These accuracy of each rule is then evaluated to determine the order in which they should be applied. Pruning is done by removing a rule’s precondition if the accuracy of the rule improves without it.
 ## Mathematical formulation
 Information gain:
- ![](../01.png)
+    - ![](../01.png)
 
 Adapted C4.5 to multi-label data classification by modifying the entropy calculation
- ![](../02.png)
+    - ![](../02.png)
