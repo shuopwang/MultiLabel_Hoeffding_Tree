@@ -32,16 +32,22 @@ class BR_Hoeffding:
     def predict(self, X):
         results = []
 
-        print(self.L)
+        #print("The shape of X: ", len(X), "  ", len(X[0]))
         if len(self.hoeffdingTreesList) == 0:
             results = np.zeros((len(X), self.L))
+            print("-" * 10 + "debug 1" + "-" * 10)
+            print("results:", results)
+            print("-" * 10 + "debug 1 " + "-" * 10)
             return results
         c = None
         tmp = []
         for index in range(len(X)):
             for i in range(len(self.hoeffdingTreesList)):
                 c = self.hoeffdingTreesList[i].predict(X[index])
-                tmp.append(c)
+                tmp.append(c[0])
             results.append(tmp)
             tmp = []
+        #print("-" * 10 + "debug 2" + "-" * 10)
+        #print("results:", results)
+        #print("-" * 10 + "debug 2" + "-" * 10)
         return results
