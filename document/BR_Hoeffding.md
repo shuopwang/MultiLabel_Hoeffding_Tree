@@ -57,3 +57,7 @@ Information gain:
 ## OneVSRestClassifier
 The similar method OneVsRest to binery relevance in sklearn:
 > http://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html
+
+## Binary Relevance
+BR:
+  - ![](https://github.com/RuiSUN1124/TestGit/raw/master/GitTest/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180211230243.png)
