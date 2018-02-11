@@ -6,7 +6,7 @@ from skmultiflow.classification.trees.hoeffding_tree import HoeffdingTree
 class BR_Hoeffding:
 
     def __init__(self):
-        self.hoeffdingTreesList = None
+        self.hoeffdingTreesList = []
 
     def fit(self, X, Y):
         self.hoeffdingTreesList = []
@@ -19,23 +19,29 @@ class BR_Hoeffding:
         return self
 
     def partial_fit(self, X, y, classes=None):
-        if self.hoeffdingTreesList is None:
-            self.hoeffdingTreesList = list(range(len(y[0])))
-        for column in range(len(y[0])):
-            yvar = np.zeros((len(y), 1))
-            for row in range(len(y)):
-                yvar[row][0] = y[row][column]
-            if self.hoeffdingTreesList[colsumn]:
-                self.hoeffdingTreesList[column].partial_fit(X, yvar)
-            else:
+        if len(self.hoeffdingTreesList) == 0:
+            self.hoeffdingTreesList = []
+            for i in range(len(y[0])):
                 self.hoeffdingTreesList.append(HoeffdingTree())
-                self.hoeffdingTreesList[column].partial_fit(X, yvar)
+        self.L = len(y[0])
+        for column in range(len(y[0])):
+            yvar = y[:, column]
+            self.hoeffdingTreesList[column].partial_fit(X, yvar)
         return self
 
     def predict(self, X):
         results = []
+
+        print(self.L)
+        if len(self.hoeffdingTreesList) == 0:
+            results = np.zeros((len(X), self.L))
+            return results
         c = None
-        for i in range(len(self.hoeffdingTreesList)):
-            c = self.hoeffdingTreesList[i].predict(X)
-            results.append(c)
+        tmp = []
+        for index in range(len(X)):
+            for i in range(len(self.hoeffdingTreesList)):
+                c = self.hoeffdingTreesList[i].predict(X[index])
+                tmp.append(c)
+            results.append(tmp)
+            tmp = []
         return results
